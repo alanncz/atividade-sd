@@ -1,8 +1,0 @@
-A estrutura pedida pela questão afeta diretamente a performance da aplicação 
-devido ao alto gasto de criação de threads, o tempo de execução se torna prolongado. 
-O uso de cinco threads no lado do servidor com apenas uma conexão faz com que algumas 
-requisições enviadas pelo cliente não sejam atendidas. 
-
-Para propor uma melhor performance foi adotado o uso de apenas uma thread para envio 
-de requisições do cliente e apenas uma thread no servidor para atendar as requisições 
-em uma única conexão.

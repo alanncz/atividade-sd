@@ -16,8 +16,6 @@ import java.util.concurrent.Executors;
  */
 public class Server {
 
-    private static int cont = 0;
-
     public static void main(String args[]) throws Exception {
 
         DatagramSocket serverSocket = new DatagramSocket(9876);
@@ -31,8 +29,7 @@ public class Server {
                     receiveData.length);
             serverSocket.receive(receivePacket);
 
-            //server5Threads(receivePacket, serverSocket); //metodo pedido na questao
-            server1Thread(receivePacket, serverSocket); // metodo usado para melhoria 
+            server5Threads(receivePacket, serverSocket);
 
         }
     }
@@ -43,12 +40,6 @@ public class Server {
 
         executorService.execute(new OperacaoServer(receivePacket, serverSocket));
 
-    }
-    
-    public static void server1Thread(DatagramPacket receivePacket, DatagramSocket serverSocket){
-        
-        Thread t = new Thread(new OperacaoServer(receivePacket, serverSocket));
-        t.start();
     }
 
 }

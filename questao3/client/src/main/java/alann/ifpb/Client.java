@@ -16,27 +16,17 @@ public class Client {
 
     public static void main(String[] args) {
 
-        int qtdaRequest = 10000;
-        //executar10Threads(); metodo pedido na questao
-        executar1Thread(qtdaRequest); //metodo usado para melhoria
+        int qtdaRequest = 1000;
+        executar5Thread(qtdaRequest); 
 
     }
-    
-    public static void executar10Threads(){
-           
+ 
+    public static void executar5Thread(int qtdaRequest){
+        
         ExecutorService executorService = Executors.newFixedThreadPool(10);
-        
         for(int k = 0; k < 10; k++)
-            executorService.execute(new OperacaoClient(10000));
-        
+            executorService.execute(new OperacaoClient(qtdaRequest));
         executorService.shutdown();
-             
-    }
-    
-    public static void executar1Thread(int qtdaRequest){
-        
-        Thread t = new Thread(new OperacaoClient(qtdaRequest));
-        t.start();
     }
 
 }
