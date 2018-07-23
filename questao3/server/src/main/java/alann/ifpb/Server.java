@@ -15,6 +15,8 @@ import java.util.concurrent.Executors;
  * @author alann
  */
 public class Server {
+    
+    private static ExecutorService executorService = Executors.newFixedThreadPool(5);
 
     public static void main(String args[]) throws Exception {
 
@@ -35,8 +37,6 @@ public class Server {
     }
 
     public static void server5Threads(DatagramPacket receivePacket, DatagramSocket serverSocket) {
-
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
 
         executorService.execute(new OperacaoServer(receivePacket, serverSocket));
 
